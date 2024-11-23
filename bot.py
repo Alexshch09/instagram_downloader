@@ -92,11 +92,6 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_text("❌ У вас нет доступа к этому боту.")
         return
 
-    # Validate the Instagram URL
-    if "instagram.com" not in message_text:
-        await update.message.reply_text("⚠️ Отправьте действительную ссылку на Instagram.")
-        return
-
     # Save the query
     save_query(user_id, username, message_text)
 
@@ -155,7 +150,6 @@ def main():
     # Initialize database
     init_db()
 
-    # Replace 'YOUR_BOT_TOKEN' with your Telegram bot token
     app = Application.builder().token(BOT_TOKEN).build()
 
     # Add handlers
